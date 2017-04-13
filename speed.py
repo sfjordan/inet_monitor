@@ -66,6 +66,9 @@ def speed_test():
   output, error = cmd_retry(cmd_list)
   download = 0
   upload = 0
+  if error:
+    logging.critical("speed test failed! Exiting...")
+    sys.exit(1)
   if not error:
     lines = str(output).split("\\n")
     download = lines[-5].split()[4]

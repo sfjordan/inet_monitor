@@ -18,9 +18,9 @@ class MyHandler(SimpleHTTPRequestHandler):
         self.wfile.write('<h>PONG</p>')
         return
       if self.path == '/network':
-        speed_img = "network_speed/speed_data.png"
-        pktloss_img = "network_speed/pktloss_data.png"
-        lat_img = "network_speed/lat_data.png"
+        speed_img = "speed_data.png"
+        pktloss_img = "pktloss_data.png"
+        lat_img = "lat_data.png"
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
@@ -30,7 +30,7 @@ class MyHandler(SimpleHTTPRequestHandler):
         return
       if self.path == '/speed':
         img = os.sep+'home'+os.sep+'sfjordan'+os.sep+\
-            'network_speed'+os.sep+'speed_data.png'
+            'speed_data.png'
         f = open(img)
         self.send_response(200)
         self.send_header('Content-type', 'image/png')
@@ -40,7 +40,7 @@ class MyHandler(SimpleHTTPRequestHandler):
         return
       if self.path == '/pktloss':
         img = os.sep+'home'+os.sep+'sfjordan'+os.sep+\
-            'network_speed'+os.sep+'pktloss_data.png'
+            'pktloss_data.png'
         f = open(img)
         self.send_response(200)
         self.send_header('Content-type', 'image/png')
