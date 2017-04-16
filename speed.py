@@ -124,9 +124,24 @@ def draw(csv_file, img_file):
   fig.subplots_adjust(bottom=0.35)
 
   date_as_numbers = [date2num(date) for date in x]
-  line1 = ax.plot(date_as_numbers, y, label="Down")
+
+  label1 = "Down"
+  label2 = "Up"
+  plt.title("Network")
+  if img_file == SPEED_IMG_FILE:
+    label1 = "Download"
+    label2 = "Upload"
+    plt.title("Speed (Mbps)")
+  elif img_file == LAT_IMG_FILE:
+    label1 = "Latency"
+    plt.title("Latency (ms)")
+  elif img_file == PKTLOSS_IMG_FILE:
+    label1 = "Packet loss"
+    plt.title("Packet loss (pct)")
+    
+  line1 = ax.plot(date_as_numbers, y, label=label1)
   if isLine2:
-    line2 = ax.plot(date_as_numbers, y_max, label="Up")
+    line2 = ax.plot(date_as_numbers, y_max, label=label2)
 
   legend = ax.legend(loc="lower right", shadow=True)
   frame = legend.get_frame()
